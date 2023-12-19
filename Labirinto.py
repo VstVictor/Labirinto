@@ -7,13 +7,13 @@ class Player:
 
     def move(self, direction):
         x, y = self.position
-        if direction == 'RIGHT':
+        if direction == 'D':
             self.position = (x, y + 1)
-        elif direction == 'LEFT':
+        elif direction == 'A':
             self.position = (x, y - 1)
-        elif direction == 'UP':
+        elif direction == 'W':
             self.position = (x - 1, y)
-        elif direction == 'DOWN':
+        elif direction == 'S':
             self.position = (x + 1, y)
 
 class Maze:
@@ -21,7 +21,7 @@ class Maze:
         self.size = size
         self.player = Player("Player")
         self.exit = (size - 1, size - 1)
-        self.obstacles = [(0, 3), (1, 0), (1, 1),(1, 4), (2, 2), (3, 3), (4, 5), (4, 1), (4, 3)]  # Example obstacles
+        self.obstacles = [(0, 3), (1, 0), (1, 1),(1, 4), (2, 2), (4, 5), (4, 1), (4, 3), (4, 4), (4, 2),]  # Example obstacles
 
     def display(self):
         for i in range(self.size):
@@ -58,11 +58,11 @@ def main():
             print("Parabéns! Você chegou à saída. Você venceu!")
             break
 
-        direction = input("Para onde você deseja ir? (UP/DOWN/LEFT/RIGHT): ").upper()
-        if direction in ['UP', 'DOWN', 'LEFT', 'RIGHT']:
+        direction = input("Para onde você deseja ir? (W/S/A/D): ").upper()
+        if direction in ['W', 'S', 'A', 'D']:
             maze.player.move(direction)
         else:
-            print("Comando inválido. Use UP, DOWN, LEFT ou RIGHT.")
+            print("Comando inválido. Use W, S, A ou D.")
 
 if __name__ == "__main__":
     main()
